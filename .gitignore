@@ -50,5 +50,7 @@ test
 prompt
 
 server.log
+# Project context document (contains sensitive info)
+GROWTHGO_CONTEXT.md
 # Skills directory
 /skills/
