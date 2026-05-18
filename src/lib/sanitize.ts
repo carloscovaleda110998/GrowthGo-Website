@@ -96,10 +96,16 @@ export function sanitizeLeadInput(data: {
   // Name and email are required
   if (!name || !email) return null
   
-  // Validate role if provided
-  const validRoles = ['realtor', 'loan-officer', 'other', '']
-  const role = sanitizeString(data.role, 50)
-  if (role && !validRoles.includes(role)) return null
+  // Normalize and validate role
+  // Accept both "Realtor" and "realtor", "Loan Officer" and "loan-officer"
+  const roleMap: Record<string, string> = {
+    'realtor': 'realtor',
+    'loan-officer': 'loan-officer',
+    'loan officer': 'loan-officer',
+    'other': 'other',
+  }
+  const rawRole = sanitizeString(data.role, 50).toLowerCase()
+  const role = rawRole ? (roleMap[rawRole] || rawRole) : ''
   
   return {
     name,
