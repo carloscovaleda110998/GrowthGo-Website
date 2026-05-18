@@ -18,6 +18,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import FAQSection from '@/components/sections/FAQSection'
 import FinalCTASection from '@/components/sections/FinalCTASection'
 import ContactSection from '@/components/sections/ContactSection'
+import AboutSection from '@/components/sections/AboutSection'
 import AdminDashboard from '@/components/admin/LeadsDashboard'
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
 
         {/* Trust Section */}
         <TrustSection />
+
+        {/* About Section */}
+        <AboutSection />
 
         {/* Problem Section */}
         <ProblemSection />

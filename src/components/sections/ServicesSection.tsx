@@ -220,12 +220,12 @@ export default function ServicesSection() {
                 ))}
               </ul>
 
-              {/* Learn More Link */}
+              {/* Get Started Link */}
               <a
-                href="#book-a-call"
+                href="#contact"
                 className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] transition-all duration-200 hover:gap-2 hover:underline"
               >
-                Learn More
+                Get Started
                 <ArrowRight className="h-4 w-4" />
               </a>
             </motion.div>

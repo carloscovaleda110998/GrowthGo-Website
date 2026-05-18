@@ -138,26 +138,26 @@ export default function Footer() {
             <ul className="space-y-3 mb-6">
               <li>
                 <a
-                  href="mailto:hello@growthgo.com"
+                  href="mailto:camilo.martinez@growthgo.com"
                   className="flex items-center gap-2.5 text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-[#2563EB]" />
-                  hello@growthgo.com
+                  camilo.martinez@growthgo.com
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+18005551234"
+                  href="tel:+573042522718"
                   className="flex items-center gap-2.5 text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]"
                 >
                   <Phone className="h-4 w-4 shrink-0 text-[#2563EB]" />
-                  (800) 555-1234
+                  +57 (304) 252-2718
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-2.5 text-sm text-slate-400">
                   <MapPin className="h-4 w-4 shrink-0 text-[#2563EB] mt-0.5" />
-                  United States
+                  Colombia - United States
                 </span>
               </li>
             </ul>

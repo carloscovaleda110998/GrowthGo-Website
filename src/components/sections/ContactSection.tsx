@@ -365,10 +365,10 @@ export default function ContactSection() {
                   <div>
                     <p className="text-sm font-medium text-[#0F172A]">Email</p>
                     <a
-                      href="mailto:info@growthgo.co"
+                      href="mailto:camilo.martinez@growthgo.com"
                       className="text-sm text-[#2563EB] hover:underline"
                     >
-                      info@growthgo.co
+                      camilo.martinez@growthgo.com
                     </a>
                   </div>
                 </div>
@@ -381,10 +381,10 @@ export default function ContactSection() {
                   <div>
                     <p className="text-sm font-medium text-[#0F172A]">Phone</p>
                     <a
-                      href="tel:+15550000000"
+                      href="tel:+573042522718"
                       className="text-sm text-[#2563EB] hover:underline"
                     >
-                      +1 (555) 000-0000
+                      +57 (304) 252-2718
                     </a>
                   </div>
                 </div>
@@ -399,7 +399,7 @@ export default function ContactSection() {
                       Location
                     </p>
                     <p className="text-sm text-[#64748B]">
-                      Serving clients across the United States
+                      Colombia - United States
                     </p>
                   </div>
                 </div>
