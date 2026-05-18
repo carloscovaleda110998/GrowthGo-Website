@@ -1,5 +1,16 @@
 'use client'
 
+/**
+ * 🔐 ADMIN DASHBOARD - Now uses server-side authentication!
+ * 
+ * What changed:
+ * - Password is NO LONGER in this file (was previously visible in frontend code)
+ * - Login goes through /api/auth/login which checks server environment variables
+ * - Session is stored as HTTP-only cookie (JavaScript can't read it)
+ * - All API calls automatically include the session cookie
+ * - Session expires after 24 hours
+ */
+
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -21,6 +32,9 @@ import {
   LogOut,
   Lock,
   X,
+  Eye,
+  EyeOff,
+  AlertTriangle,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -75,27 +89,55 @@ const roleLabels: Record<string, string> = {
   other: 'Other',
 }
 
-// Admin password - change this to whatever you want
-const ADMIN_PASSWORD = 'growthgo2025'
-
 export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps) {
   const [leads, setLeads] = useState<Lead[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [isDetailOpen, setIsDetailOpen] = useState(false)
+  
+  // Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [passwordInput, setPasswordInput] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [loginLoading, setLoginLoading] = useState(false)
+  const [authChecked, setAuthChecked] = useState(false)
+
+  // Check if already authenticated on mount
+  useEffect(() => {
+    if (isOpen) {
+      checkAuth()
+    }
+  }, [isOpen])
+
+  const checkAuth = async () => {
+    try {
+      const res = await fetch('/api/auth/verify')
+      const data = await res.json()
+      setIsAuthenticated(data.authenticated)
+      setAuthChecked(true)
+    } catch {
+      setIsAuthenticated(false)
+      setAuthChecked(true)
+    }
+  }
 
   const fetchLeads = useCallback(async () => {
     setLoading(true)
     try {
       const res = await fetch('/api/leads')
+      if (res.status === 401) {
+        // Session expired
+        setIsAuthenticated(false)
+        toast.error('Session expired. Please log in again.')
+        return
+      }
       if (res.ok) {
         const data = await res.json()
         setLeads(data.leads || [])
       }
     } catch (err) {
       console.error('Error fetching leads:', err)
+      toast.error('Failed to load leads')
     } finally {
       setLoading(false)
     }
@@ -107,26 +149,56 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
     }
   }, [isOpen, isAuthenticated, fetchLeads])
 
-  // Reset state when closing
-  const handleClose = () => {
-    onClose()
-    // Don't reset authentication so they don't have to re-enter password
+  const handleLogin = async () => {
+    if (!passwordInput) {
+      toast.error('Please enter a password')
+      return
+    }
+    
+    setLoginLoading(true)
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: passwordInput }),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setIsAuthenticated(true)
+        setPasswordInput('')
+        toast.success('Access granted')
+      } else if (res.status === 429) {
+        toast.error('Too many attempts. Please wait a moment.', {
+          description: `Try again in ${data.retryAfter || 60} seconds`,
+        })
+      } else {
+        toast.error('Incorrect password')
+        setPasswordInput('')
+      }
+    } catch {
+      toast.error('Connection error. Please try again.')
+    } finally {
+      setLoginLoading(false)
+    }
   }
 
-  const handleFullClose = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' })
+    } catch {
+      // Ignore errors on logout
+    }
     setIsAuthenticated(false)
     setPasswordInput('')
     onClose()
+    toast.success('Logged out')
   }
 
-  const handleLogin = () => {
-    if (passwordInput === ADMIN_PASSWORD) {
-      setIsAuthenticated(true)
-      toast.success('Access granted')
-    } else {
-      toast.error('Incorrect password')
-      setPasswordInput('')
-    }
+  const handleClose = () => {
+    onClose()
+    // Keep authentication so they don't have to re-enter password
   }
 
   const updateStatus = async (id: string, status: string) => {
@@ -136,6 +208,11 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, status }),
       })
+      if (res.status === 401) {
+        setIsAuthenticated(false)
+        toast.error('Session expired. Please log in again.')
+        return
+      }
       if (res.ok) {
         setLeads((prev) =>
           prev.map((lead) => (lead.id === id ? { ...lead, status } : lead))
@@ -153,6 +230,11 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
   const deleteLead = async (id: string) => {
     try {
       const res = await fetch(`/api/leads?id=${id}`, { method: 'DELETE' })
+      if (res.status === 401) {
+        setIsAuthenticated(false)
+        toast.error('Session expired. Please log in again.')
+        return
+      }
       if (res.ok) {
         setLeads((prev) => prev.filter((lead) => lead.id !== id))
         if (selectedLead?.id === id) {
@@ -233,7 +315,7 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
             className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative"
           >
             <button
-              onClick={handleFullClose}
+              onClick={handleClose}
               className="absolute top-4 right-4 p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
             >
               <X className="h-5 w-5" />
@@ -252,26 +334,49 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
             </div>
 
             <div className="space-y-4">
-              <Input
-                type="password"
-                placeholder="Enter password"
-                value={passwordInput}
-                onChange={(e) => setPasswordInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-                className="h-12 text-center text-lg rounded-lg border-[#E2E8F0] focus:border-[#2563EB] focus:ring-[#2563EB]/20"
-                autoFocus
-              />
+              <div className="relative">
+                <Input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter password"
+                  value={passwordInput}
+                  onChange={(e) => setPasswordInput(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+                  className="h-12 text-lg rounded-lg border-[#E2E8F0] focus:border-[#2563EB] focus:ring-[#2563EB]/20 pr-12"
+                  autoFocus
+                  disabled={loginLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600"
+                >
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
               <Button
                 onClick={handleLogin}
+                disabled={loginLoading}
                 className="w-full h-12 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold"
               >
-                Access Dashboard
+                {loginLoading ? (
+                  <RefreshCw className="h-5 w-5 animate-spin" />
+                ) : (
+                  'Access Dashboard'
+                )}
               </Button>
             </div>
 
-            <p className="text-xs text-[#94A3B8] mt-6 text-center">
-              This area is restricted to authorized personnel only.
-            </p>
+            <div className="mt-6 p-3 bg-amber-50 rounded-lg border border-amber-200">
+              <div className="flex items-start gap-2">
+                <AlertTriangle className="h-4 w-4 text-amber-600 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-xs font-medium text-amber-800">Security Notice</p>
+                  <p className="text-xs text-amber-700 mt-0.5">
+                    Failed login attempts are rate-limited. Your password is never sent to the frontend.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </AnimatePresence>
@@ -297,18 +402,22 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
                 </div>
                 <div>
                   <h1 className="text-lg font-bold">GrowthGo Admin</h1>
-                  <p className="text-xs text-slate-400">Leads Dashboard</p>
+                  <p className="text-xs text-slate-400">Leads Dashboard • Secured</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
+                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-green-500/10 rounded-lg">
+                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-xs text-green-400 font-medium">Session Active</span>
+                </div>
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={handleFullClose}
+                  onClick={handleLogout}
                   className="text-red-400 hover:text-red-300 hover:bg-white/10"
                 >
                   <LogOut className="h-4 w-4 mr-1.5" />
-                  Logout & Close
+                  Logout
                 </Button>
                 <button
                   onClick={handleClose}
@@ -506,16 +615,16 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
             )}
           </Card>
 
-          {/* Export Info */}
+          {/* Security Info */}
           <div className="mt-6">
-            <Card className="p-4 sm:p-5 border border-[#06B6D4]/20 bg-[#06B6D4]/5">
+            <Card className="p-4 sm:p-5 border border-green-200 bg-green-50/50">
               <div className="flex items-start gap-3">
-                <FileSpreadsheet className="h-5 w-5 text-[#06B6D4] mt-0.5 shrink-0" />
+                <Lock className="h-5 w-5 text-green-600 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-semibold text-[#0F172A]">Export Your Leads</p>
+                  <p className="text-sm font-semibold text-[#0F172A]">Secure Dashboard</p>
                   <p className="text-xs text-[#64748B] mt-1">
-                    Use the <strong>Export CSV</strong> button above to download all leads as a CSV file. 
-                    You can open it in Excel, Google Sheets, or any spreadsheet app.
+                    Your session is secured with an HTTP-only cookie. Password is verified server-side and never exposed to the frontend. 
+                    Use <strong>Export CSV</strong> to download leads for Excel or Google Sheets.
                   </p>
                 </div>
               </div>

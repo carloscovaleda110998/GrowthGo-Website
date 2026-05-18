@@ -1,11 +1,27 @@
+/**
+ * 🔒 PROTECTED LEADS API
+ * 
+ * GET    → Requires admin authentication (session cookie)
+ * POST   → Public (contact form) but rate limited + sanitized
+ * PUT    → Requires admin authentication
+ * DELETE → Requires admin authentication
+ * 
+ * This means:
+ * - Anyone can submit a lead (3 per minute max)
+ * - Only authenticated admins can VIEW, UPDATE, or DELETE leads
+ * - The password is NEVER in the frontend code
+ */
+
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { isAuthenticated } from '@/lib/auth'
+import { checkContactRateLimit } from '@/lib/rate-limit'
+import { sanitizeLeadInput } from '@/lib/sanitize'
 
-// Google Sheets webhook URL - set this in your .env file
-// See the setup instructions in the admin dashboard
+// Google Sheets webhook URL (optional)
 const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || ''
 
-// Send lead data to Google Sheets via webhook (Google Apps Script)
+// Send lead data to Google Sheets (optional feature)
 async function sendToGoogleSheets(data: {
   name: string
   email: string
@@ -16,10 +32,7 @@ async function sendToGoogleSheets(data: {
   message: string | null
   source: string
 }) {
-  if (!GOOGLE_SHEETS_WEBHOOK_URL) {
-    console.log('Google Sheets webhook not configured. Set GOOGLE_SHEETS_WEBHOOK_URL in .env')
-    return
-  }
+  if (!GOOGLE_SHEETS_WEBHOOK_URL) return
 
   try {
     await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
@@ -37,15 +50,26 @@ async function sendToGoogleSheets(data: {
         source: data.source,
       }),
     })
-    console.log('Lead sent to Google Sheets successfully')
   } catch (error) {
     console.error('Failed to send lead to Google Sheets:', error)
-    // Don't fail the whole request if Google Sheets fails
   }
 }
 
+/**
+ * GET /api/leads - List all leads (ADMIN ONLY)
+ * Must have a valid session cookie to access
+ */
 export async function GET() {
   try {
+    // 🔒 SECURITY CHECK: Is the user authenticated?
+    const authenticated = await isAuthenticated()
+    if (!authenticated) {
+      return NextResponse.json(
+        { error: 'Unauthorized. Please log in to access this resource.' },
+        { status: 401 }
+      )
+    }
+
     const leads = await db.lead.findMany({
       orderBy: { createdAt: 'desc' },
     })
@@ -59,54 +83,49 @@ export async function GET() {
   }
 }
 
+/**
+ * POST /api/leads - Create a new lead (PUBLIC - contact form)
+ * Rate limited: 3 submissions per minute per IP
+ * All inputs are sanitized
+ */
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-
-    const { name, email, phone, company, role, service, message, source } = body
-
-    if (!name || !email) {
+    // ⏱️ RATE LIMIT: Prevent spam (3 per minute per IP)
+    const ip = request.headers.get('x-forwarded-for') || 
+               request.headers.get('x-real-ip') || 
+               'unknown'
+    
+    const rateLimit = checkContactRateLimit(ip)
+    if (!rateLimit.allowed) {
       return NextResponse.json(
-        { error: 'Name and email are required.' },
-        { status: 400 }
+        { 
+          error: 'Too many submissions. Please wait a moment before trying again.',
+          retryAfter: Math.ceil((rateLimit.resetAt - Date.now()) / 1000)
+        },
+        { status: 429 }
       )
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    const body = await request.json()
+
+    // 🧹 SANITIZE: Clean all inputs before storing
+    const sanitized = sanitizeLeadInput(body)
+    if (!sanitized) {
       return NextResponse.json(
-        { error: 'Please provide a valid email address.' },
+        { error: 'Invalid input. Please check your data and try again.' },
         { status: 400 }
       )
     }
 
     const lead = await db.lead.create({
-      data: {
-        name,
-        email,
-        phone: phone || null,
-        company: company || null,
-        role: role || null,
-        service: service || null,
-        message: message || null,
-        source: source || 'website',
-      },
+      data: sanitized,
     })
 
-    // Send to Google Sheets in the background (non-blocking)
-    sendToGoogleSheets({
-      name,
-      email,
-      phone: phone || null,
-      company: company || null,
-      role: role || null,
-      service: service || null,
-      message: message || null,
-      source: source || 'website',
-    })
+    // Send to Google Sheets in the background (optional, non-blocking)
+    sendToGoogleSheets(sanitized)
 
     return NextResponse.json(
-      { message: 'Lead created successfully.', lead },
+      { message: 'Thank you! We\'ll be in touch soon.', lead },
       { status: 201 }
     )
   } catch (error) {
@@ -118,8 +137,20 @@ export async function POST(request: NextRequest) {
   }
 }
 
+/**
+ * PUT /api/leads - Update lead status (ADMIN ONLY)
+ */
 export async function PUT(request: NextRequest) {
   try {
+    // 🔒 SECURITY CHECK
+    const authenticated = await isAuthenticated()
+    if (!authenticated) {
+      return NextResponse.json(
+        { error: 'Unauthorized. Please log in.' },
+        { status: 401 }
+      )
+    }
+
     const body = await request.json()
     const { id, status } = body
 
@@ -130,6 +161,7 @@ export async function PUT(request: NextRequest) {
       )
     }
 
+    // Validate status value
     const validStatuses = ['new', 'contacted', 'qualified', 'converted', 'lost']
     if (!validStatuses.includes(status)) {
       return NextResponse.json(
@@ -153,8 +185,20 @@ export async function PUT(request: NextRequest) {
   }
 }
 
+/**
+ * DELETE /api/leads - Delete a lead (ADMIN ONLY)
+ */
 export async function DELETE(request: NextRequest) {
   try {
+    // 🔒 SECURITY CHECK
+    const authenticated = await isAuthenticated()
+    if (!authenticated) {
+      return NextResponse.json(
+        { error: 'Unauthorized. Please log in.' },
+        { status: 401 }
+      )
+    }
+
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')
 
