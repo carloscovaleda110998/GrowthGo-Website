@@ -182,7 +182,7 @@ export default function WhyGrowthGoSection() {
             size="lg"
             className="mt-6 h-12 bg-[#2563EB] px-8 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:bg-[#1D4ED8] hover:shadow-xl hover:shadow-[#2563EB]/30"
           >
-            <a href="#book-a-call">
+            <a href="#contact">
               Book Your Strategy Call
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>

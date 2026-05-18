@@ -213,7 +213,7 @@ export default function LoanOfficersSection() {
                 size="lg"
                 className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-8 shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#2563EB]/30"
               >
-                <a href="#book-a-call">
+                <a href="#contact">
                   Get Started as a Loan Officer
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>

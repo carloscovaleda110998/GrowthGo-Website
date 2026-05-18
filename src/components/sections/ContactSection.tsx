@@ -346,7 +346,11 @@ export default function ContactSection() {
                 Schedule a free strategy call
               </p>
 
-              <a href="#final-cta" className="mt-6 block">
+              <a href="#final-cta" onClick={(e) => {
+                e.preventDefault()
+                const el = document.querySelector('#final-cta')
+                if (el) el.scrollIntoView({ behavior: 'smooth' })
+              }} className="mt-6 block">
                 <Button
                   size="lg"
                   className="w-full bg-[#10B981] text-white shadow-lg shadow-[#10B981]/25 transition-all duration-200 hover:bg-[#059669] hover:shadow-xl"

@@ -162,7 +162,7 @@ export default function Footer() {
               </li>
             </ul>
             <Button
-              onClick={() => handleNavClick('#book-a-call')}
+              onClick={() => handleNavClick('#contact')}
               className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
               size="default"
             >

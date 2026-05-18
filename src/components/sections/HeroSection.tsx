@@ -245,7 +245,7 @@ export default function HeroSection() {
               className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
             >
               <Button
-                onClick={() => handleNavClick('#book-a-call')}
+                onClick={() => handleNavClick('#contact')}
                 size="lg"
                 className="group relative h-12 px-8 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
               >

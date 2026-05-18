@@ -99,7 +99,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <Button
-            onClick={() => handleNavClick('#book-a-call')}
+            onClick={() => handleNavClick('#contact')}
             className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-5 shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg hover:shadow-[#2563EB]/30"
             size="default"
           >
@@ -157,7 +157,7 @@ export default function Navbar() {
               <div className="mt-auto border-t border-slate-100 px-6 py-5">
                 <SheetClose asChild>
                   <Button
-                    onClick={() => handleNavClick('#book-a-call')}
+                    onClick={() => handleNavClick('#contact')}
                     className="w-full bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200"
                     size="lg"
                   >
