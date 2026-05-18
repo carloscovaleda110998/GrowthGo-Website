@@ -1,6 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
+// Google Sheets webhook URL - set this in your .env file
+// See the setup instructions in the admin dashboard
+const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || ''
+
+// Send lead data to Google Sheets via webhook (Google Apps Script)
+async function sendToGoogleSheets(data: {
+  name: string
+  email: string
+  phone: string | null
+  company: string | null
+  role: string | null
+  service: string | null
+  message: string | null
+  source: string
+}) {
+  if (!GOOGLE_SHEETS_WEBHOOK_URL) {
+    console.log('Google Sheets webhook not configured. Set GOOGLE_SHEETS_WEBHOOK_URL in .env')
+    return
+  }
+
+  try {
+    await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        timestamp: new Date().toISOString(),
+        name: data.name,
+        email: data.email,
+        phone: data.phone || '',
+        company: data.company || '',
+        role: data.role || '',
+        service: data.service || '',
+        message: data.message || '',
+        source: data.source,
+      }),
+    })
+    console.log('Lead sent to Google Sheets successfully')
+  } catch (error) {
+    console.error('Failed to send lead to Google Sheets:', error)
+    // Don't fail the whole request if Google Sheets fails
+  }
+}
+
 export async function GET() {
   try {
     const leads = await db.lead.findMany({
@@ -48,6 +91,18 @@ export async function POST(request: NextRequest) {
         message: message || null,
         source: source || 'website',
       },
+    })
+
+    // Send to Google Sheets in the background (non-blocking)
+    sendToGoogleSheets({
+      name,
+      email,
+      phone: phone || null,
+      company: company || null,
+      role: role || null,
+      service: service || null,
+      message: message || null,
+      source: source || 'website',
     })
 
     return NextResponse.json(

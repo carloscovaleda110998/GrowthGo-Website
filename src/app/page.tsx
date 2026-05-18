@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { LayoutDashboard, X } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
@@ -22,6 +21,18 @@ import AdminDashboard from '@/components/admin/LeadsDashboard'
 
 export default function Home() {
   const [showAdmin, setShowAdmin] = useState(false)
+
+  // Secret keyboard shortcut: Ctrl+Shift+L to toggle admin
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+        e.preventDefault()
+        setShowAdmin((prev) => !prev)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
@@ -63,7 +74,7 @@ export default function Home() {
         {/* FAQ Section */}
         <FAQSection />
 
-        {/* Admin Dashboard (toggleable) */}
+        {/* Admin Dashboard (hidden, accessed via Ctrl+Shift+L) */}
         {showAdmin && (
           <div>
             <AdminDashboard />
@@ -77,19 +88,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-
-      {/* Admin Toggle Button */}
-      <button
-        onClick={() => setShowAdmin(!showAdmin)}
-        className={`fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
-          showAdmin
-            ? 'bg-[#0F172A] text-white hover:bg-[#1E293B]'
-            : 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-[#2563EB]/30'
-        }`}
-        aria-label={showAdmin ? 'Close admin dashboard' : 'Open admin dashboard'}
-      >
-        {showAdmin ? <X className="h-5 w-5" /> : <LayoutDashboard className="h-5 w-5" />}
-      </button>
     </div>
   )
 }
