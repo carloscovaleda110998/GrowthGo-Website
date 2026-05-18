@@ -70,3 +70,23 @@
 - Fixed BriefcaseOverflow → Briefcase import error in ProblemSection
 - Added floating admin toggle button (bottom-right) with AnimatePresence for smooth show/hide
 - Page loads with 200 status, lint passes cleanly
+
+## Task 12: Admin Dashboard Security & Access Fix
+- **Status**: ✅ Completed
+- **Problem**: Ctrl+Shift+L keyboard shortcut didn't work (browser intercepted it) and there was no visible way to access the admin dashboard
+- **Solution**: Complete redesign of admin access and dashboard UI
+- **Files Updated**:
+  - `/home/z/my-project/src/app/page.tsx` - Removed inline admin rendering, changed keyboard shortcut to Ctrl+Shift+K, admin now renders as overlay, Footer gets onOpenAdmin prop
+  - `/home/z/my-project/src/components/admin/LeadsDashboard.tsx` - Completely rewritten as a full-screen overlay (fixed inset-0 z-100) with:
+    - Password protection screen (password: growthgo2025) shown as a centered modal on dark backdrop
+    - Full-screen dashboard with dark header bar, stats cards, leads table
+    - CSV export functionality
+    - Lead detail dialog
+    - Logout & close buttons
+    - AnimatePresence for smooth transitions
+  - `/home/z/my-project/src/components/layout/Footer.tsx` - Added onOpenAdmin prop, added subtle Shield icon in bottom bar (looks like a copyright/auth icon, very discreet)
+- **Access methods**:
+  1. Small Shield icon in footer bottom bar (between legal links)
+  2. Ctrl+Shift+K keyboard shortcut
+  3. Both require password: `growthgo2025`
+- Lint passes cleanly, compiles successfully

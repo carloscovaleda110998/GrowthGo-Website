@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
@@ -22,16 +22,24 @@ import AdminDashboard from '@/components/admin/LeadsDashboard'
 export default function Home() {
   const [showAdmin, setShowAdmin] = useState(false)
 
-  // Secret keyboard shortcut: Ctrl+Shift+L to toggle admin
+  // Secret keyboard shortcut: Ctrl+Shift+K to open admin
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+      if (e.ctrlKey && e.shiftKey && e.key === 'K') {
         e.preventDefault()
-        setShowAdmin((prev) => !prev)
+        setShowAdmin(true)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  const openAdmin = useCallback(() => {
+    setShowAdmin(true)
+  }, [])
+
+  const closeAdmin = useCallback(() => {
+    setShowAdmin(false)
   }, [])
 
   return (
@@ -74,20 +82,18 @@ export default function Home() {
         {/* FAQ Section */}
         <FAQSection />
 
-        {/* Admin Dashboard (hidden, accessed via Ctrl+Shift+L) */}
-        {showAdmin && (
-          <div>
-            <AdminDashboard />
-          </div>
-        )}
-
         {/* Final CTA Section */}
         <FinalCTASection />
 
         {/* Contact Section */}
         <ContactSection />
       </main>
-      <Footer />
+      <Footer onOpenAdmin={openAdmin} />
+
+      {/* Admin Dashboard as full-screen overlay */}
+      {showAdmin && (
+        <AdminDashboard isOpen={showAdmin} onClose={closeAdmin} />
+      )}
     </div>
   )
 }

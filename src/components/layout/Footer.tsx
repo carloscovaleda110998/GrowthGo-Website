@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import {
   Mail,
   Phone,
@@ -11,10 +10,15 @@ import {
   Linkedin,
   Instagram,
   ArrowRight,
+  Shield,
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+
+interface FooterProps {
+  onOpenAdmin: () => void
+}
 
 const serviceLinks = [
   { label: 'Marketing', href: '#services' },
@@ -44,7 +48,7 @@ const legalLinks = [
   { label: 'Cookie Policy', href: '#' },
 ]
 
-export default function Footer() {
+export default function Footer({ onOpenAdmin }: FooterProps) {
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
       const el = document.querySelector(href)
@@ -194,6 +198,15 @@ export default function Footer() {
                 )}
               </span>
             ))}
+            {/* Subtle admin access button - looks like a copyright/auth icon */}
+            <button
+              onClick={onOpenAdmin}
+              className="flex items-center gap-1 text-xs text-slate-700 hover:text-slate-500 transition-colors duration-200 cursor-default"
+              title="Admin"
+              aria-label="Admin access"
+            >
+              <Shield className="h-3 w-3" />
+            </button>
           </div>
         </div>
       </div>
