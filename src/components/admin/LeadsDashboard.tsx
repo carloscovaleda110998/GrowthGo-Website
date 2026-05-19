@@ -11,7 +11,7 @@
  * - Session expires after 24 hours
  */
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Users,
@@ -35,19 +35,14 @@ import {
   Eye,
   EyeOff,
   AlertTriangle,
+  ChevronDown,
+  Check,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import {
   Dialog,
   DialogContent,
@@ -87,6 +82,106 @@ const roleLabels: Record<string, string> = {
   realtor: 'Realtor',
   'loan-officer': 'Loan Officer',
   other: 'Other',
+}
+
+const statusOptions = ['new', 'contacted', 'qualified', 'converted', 'lost']
+
+/**
+ * Custom StatusDropdown - renders INLINE (no portal) so it works
+ * inside the full-screen dashboard overlay without z-index/stacking issues.
+ */
+function StatusDropdown({
+  value,
+  onChange,
+  className,
+}: {
+  value: string
+  onChange: (value: string) => void
+  className?: string
+}) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [open])
+
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [open])
+
+  const info = statusConfig[value] || statusConfig.new
+
+  return (
+    <div ref={ref} className="relative inline-block">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation()
+          setOpen((prev) => !prev)
+        }}
+        className={`inline-flex items-center gap-1 rounded-md border px-2.5 py-1 text-xs font-medium transition-colors hover:opacity-80 ${info.bg} ${info.color} ${className || ''}`}
+      >
+        {info.label}
+        <ChevronDown className="h-3 w-3 opacity-60" />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="absolute left-0 top-full mt-1 z-[200] w-40 rounded-lg border border-slate-200 bg-white shadow-lg py-1"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {statusOptions.map((status) => {
+              const sInfo = statusConfig[status]
+              const isSelected = status === value
+              return (
+                <button
+                  key={status}
+                  type="button"
+                  onClick={() => {
+                    onChange(status)
+                    setOpen(false)
+                  }}
+                  className={`flex w-full items-center gap-2 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-slate-50 ${
+                    isSelected ? sInfo.color : 'text-slate-700'
+                  }`}
+                >
+                  <span className={`inline-block h-2 w-2 rounded-full ${
+                    status === 'new' ? 'bg-blue-500' :
+                    status === 'contacted' ? 'bg-amber-500' :
+                    status === 'qualified' ? 'bg-purple-500' :
+                    status === 'converted' ? 'bg-green-500' :
+                    'bg-red-500'
+                  }`} />
+                  {sInfo.label}
+                  {isSelected && <Check className="ml-auto h-3 w-3" />}
+                </button>
+              )
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
 }
 
 export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps) {
@@ -571,24 +666,10 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
                             <span className="text-sm text-[#64748B]">{lead.service || '—'}</span>
                           </td>
                           <td className="px-4 sm:px-6 py-4">
-                            <Select
+                            <StatusDropdown
                               value={lead.status}
-                              onValueChange={(value) => updateStatus(lead.id, value)}
-                            >
-                              <SelectTrigger
-                                className={`w-[130px] h-7 text-xs border ${statusInfo.bg} ${statusInfo.color}`}
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent className="z-[200]">
-                                <SelectItem value="new">New</SelectItem>
-                                <SelectItem value="contacted">Contacted</SelectItem>
-                                <SelectItem value="qualified">Qualified</SelectItem>
-                                <SelectItem value="converted">Converted</SelectItem>
-                                <SelectItem value="lost">Lost</SelectItem>
-                              </SelectContent>
-                            </Select>
+                              onChange={(value) => updateStatus(lead.id, value)}
+                            />
                           </td>
                           <td className="px-4 sm:px-6 py-4 hidden lg:table-cell">
                             <span className="text-sm text-[#64748B]">{formatDate(lead.createdAt)}</span>
@@ -706,21 +787,10 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
                     <Calendar className="h-3.5 w-3.5" />
                     {formatDate(selectedLead.createdAt)}
                   </div>
-                  <Select
+                  <StatusDropdown
                     value={selectedLead.status}
-                    onValueChange={(value) => updateStatus(selectedLead.id, value)}
-                  >
-                    <SelectTrigger className="w-[130px] h-8 text-xs">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="z-[200]">
-                      <SelectItem value="new">New</SelectItem>
-                      <SelectItem value="contacted">Contacted</SelectItem>
-                      <SelectItem value="qualified">Qualified</SelectItem>
-                      <SelectItem value="converted">Converted</SelectItem>
-                      <SelectItem value="lost">Lost</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    onChange={(value) => updateStatus(selectedLead.id, value)}
+                  />
                 </div>
               </div>
             )}

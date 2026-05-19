@@ -128,3 +128,20 @@
   - ✅ XSS sanitization works (<script> tags removed)
   - ✅ Rate limiting active on login and contact form
   - ✅ Lint passes cleanly
+
+## Task 14: Fix Admin Dashboard Status Dropdown
+- **Status**: ✅ Completed
+- **Problem**: Clicking the status dropdown in the admin dashboard did nothing — no options appeared to change lead status
+- **Root Cause**: Radix UI `Select` component uses a `Portal` that renders dropdown content at the document body level, which ended up behind the full-screen dashboard overlay (`fixed inset-0 z-[100]`). The stacking context of the overlay prevented the portal-rendered dropdown from being visible/interactable.
+- **Solution**: Replaced Radix `Select` with a custom `StatusDropdown` component that renders **inline** (no portal), staying within the overlay's DOM tree and stacking context.
+- **Files Updated**:
+  - `/home/z/my-project/src/components/admin/LeadsDashboard.tsx` - Added `StatusDropdown` component with:
+    - Inline rendering (no portal) — works inside any z-index overlay
+    - AnimatePresence smooth open/close animation
+    - Outside-click and Escape key to close
+    - Color-coded status dots and labels matching existing `statusConfig`
+    - Check mark for current selection
+    - Used in both the leads table and the lead detail dialog
+    - Removed all Radix `Select` imports (Select, SelectContent, SelectItem, SelectTrigger, SelectValue)
+    - Added new imports: `useRef`, `ChevronDown`, `Check`
+- Lint passes cleanly, compiles successfully
