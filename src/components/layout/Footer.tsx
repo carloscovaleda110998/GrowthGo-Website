@@ -69,9 +69,9 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
               <Image
                 src="/growthgo-logo-icon.png"
                 alt="GrowthGo Logo"
-                width={44}
-                height={44}
-                className="h-11 w-auto"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
               />
               <span className="text-xl font-bold tracking-tight">
                 Growth<span className="text-[#2563EB]">Go</span>

@@ -65,9 +65,9 @@ export default function Navbar() {
           <Image
             src="/growthgo-logo-icon.png"
             alt="GrowthGo Logo"
-            width={48}
-            height={48}
-            className="h-12 w-auto"
+            width={44}
+            height={44}
+            className="h-11 w-auto"
             priority
           />
           <span
@@ -130,9 +130,9 @@ export default function Navbar() {
                   <Image
                     src="/growthgo-logo-icon.png"
                     alt="GrowthGo Logo"
-                    width={40}
-                    height={40}
-                    className="h-10 w-auto"
+                    width={36}
+                    height={36}
+                    className="h-9 w-auto"
                   />
                   <span className="text-lg font-bold text-[#0F172A]">
                     Growth<span className="text-[#2563EB]">Go</span>
