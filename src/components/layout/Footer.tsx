@@ -67,11 +67,11 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
               <Image
-                src="/growthgo-logo.png"
+                src="/growthgo-logo-icon.png"
                 alt="GrowthGo Logo"
-                width={36}
-                height={36}
-                className="h-9 w-auto"
+                width={44}
+                height={44}
+                className="h-11 w-auto"
               />
               <span className="text-xl font-bold tracking-tight">
                 Growth<span className="text-[#2563EB]">Go</span>

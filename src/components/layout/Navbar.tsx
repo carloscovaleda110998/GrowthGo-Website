@@ -63,11 +63,11 @@ export default function Navbar() {
           className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
         >
           <Image
-            src="/growthgo-logo.png"
+            src="/growthgo-logo-icon.png"
             alt="GrowthGo Logo"
-            width={40}
-            height={40}
-            className="h-10 w-auto"
+            width={48}
+            height={48}
+            className="h-12 w-auto"
             priority
           />
           <span
@@ -128,11 +128,11 @@ export default function Navbar() {
               <SheetHeader className="border-b border-slate-100 px-6 py-5">
                 <SheetTitle className="flex items-center gap-2.5">
                   <Image
-                    src="/growthgo-logo.png"
+                    src="/growthgo-logo-icon.png"
                     alt="GrowthGo Logo"
-                    width={32}
-                    height={32}
-                    className="h-8 w-auto"
+                    width={40}
+                    height={40}
+                    className="h-10 w-auto"
                   />
                   <span className="text-lg font-bold text-[#0F172A]">
                     Growth<span className="text-[#2563EB]">Go</span>
