@@ -11,6 +11,7 @@ import {
   Instagram,
   ArrowRight,
   Shield,
+  MessageCircle,
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -165,14 +166,19 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
                 </span>
               </li>
             </ul>
-            <Button
-              onClick={() => handleNavClick('#contact')}
-              className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
-              size="default"
+            <a
+              href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Book a Call
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Button>
+              <Button
+                className="bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold shadow-md shadow-[#25D366]/25 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
+                size="default"
+              >
+                <MessageCircle className="mr-1.5 h-4 w-4" />
+                WhatsApp Us
+              </Button>
+            </a>
           </div>
         </div>
       </div>

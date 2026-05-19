@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu } from 'lucide-react'
+import { Menu, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -98,13 +98,19 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Button
-            onClick={() => handleNavClick('#contact')}
-            className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-5 shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg hover:shadow-[#2563EB]/30"
-            size="default"
+          <a
+            href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Book a Call
-          </Button>
+            <Button
+              className="bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold px-5 shadow-md shadow-[#25D366]/25 transition-all duration-200 hover:shadow-lg hover:shadow-[#25D366]/30"
+              size="default"
+            >
+              <MessageCircle className="mr-1.5 h-4 w-4" />
+              WhatsApp Us
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu */}
@@ -156,13 +162,19 @@ export default function Navbar() {
 
               <div className="mt-auto border-t border-slate-100 px-6 py-5">
                 <SheetClose asChild>
-                  <Button
-                    onClick={() => handleNavClick('#contact')}
-                    className="w-full bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200"
-                    size="lg"
+                  <a
+                    href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Book a Call
-                  </Button>
+                    <Button
+                      className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold shadow-md shadow-[#25D366]/25 transition-all duration-200"
+                      size="lg"
+                    >
+                      <MessageCircle className="mr-1.5 h-4 w-4" />
+                      WhatsApp Us
+                    </Button>
+                  </a>
                 </SheetClose>
               </div>
             </SheetContent>
