@@ -581,7 +581,7 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
                               >
                                 <SelectValue />
                               </SelectTrigger>
-                              <SelectContent>
+                              <SelectContent className="z-[200]">
                                 <SelectItem value="new">New</SelectItem>
                                 <SelectItem value="contacted">Contacted</SelectItem>
                                 <SelectItem value="qualified">Qualified</SelectItem>
@@ -713,7 +713,7 @@ export default function AdminDashboard({ isOpen, onClose }: AdminDashboardProps)
                     <SelectTrigger className="w-[130px] h-8 text-xs">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="z-[200]">
                       <SelectItem value="new">New</SelectItem>
                       <SelectItem value="contacted">Contacted</SelectItem>
                       <SelectItem value="qualified">Qualified</SelectItem>
