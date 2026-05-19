@@ -99,7 +99,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+            href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -162,7 +162,7 @@ export default function Navbar() {
               <div className="mt-auto border-t border-slate-100 px-6 py-5">
                 <SheetClose asChild>
                   <a
-                    href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+                    href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
