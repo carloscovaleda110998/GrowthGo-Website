@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Phone, MessageCircle } from 'lucide-react'
+import { ArrowRight, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export default function FinalCTASection() {
@@ -61,16 +61,16 @@ export default function FinalCTASection() {
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <a
-            href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20your%20services!"
+            href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Button
               size="lg"
-              className="bg-[#25D366] px-8 py-6 text-base font-semibold text-white shadow-lg shadow-[#25D366]/25 transition-all duration-200 hover:bg-[#20BD5A] hover:shadow-xl hover:shadow-[#25D366]/30"
+              className="bg-[#2563EB] px-8 py-6 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:bg-[#1D4ED8] hover:shadow-xl hover:shadow-[#2563EB]/30"
             >
-              <MessageCircle className="mr-2 size-4" />
-              WhatsApp Us
+              Book Your Free Strategy Call
+              <ArrowRight className="ml-2 size-4" />
             </Button>
           </a>
           <a href="#contact">
@@ -80,7 +80,7 @@ export default function FinalCTASection() {
               className="border-white/30 bg-transparent px-8 py-6 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:border-white/50 hover:bg-white/10"
             >
               <Phone className="mr-2 size-4" />
-              Contact Form
+              Contact Us
             </Button>
           </a>
         </motion.div>

@@ -12,7 +12,6 @@ import {
   MapPin,
   Calendar,
   Loader2,
-  MessageCircle,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -355,10 +354,10 @@ export default function ContactSection() {
               >
                 <Button
                   size="lg"
-                  className="w-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/25 transition-all duration-200 hover:bg-[#20BD5A] hover:shadow-xl"
+                  className="w-full bg-[#10B981] text-white shadow-lg shadow-[#10B981]/25 transition-all duration-200 hover:bg-[#059669] hover:shadow-xl"
                 >
-                  <MessageCircle className="mr-2 size-4" />
-                  WhatsApp Us
+                  <Calendar className="mr-2 size-4" />
+                  Book a Call
                 </Button>
               </a>
 

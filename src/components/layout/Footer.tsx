@@ -11,7 +11,6 @@ import {
   Instagram,
   ArrowRight,
   Shield,
-  MessageCircle,
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -172,11 +171,11 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
               rel="noopener noreferrer"
             >
               <Button
-                className="bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold shadow-md shadow-[#25D366]/25 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
+                className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
                 size="default"
               >
-                <MessageCircle className="mr-1.5 h-4 w-4" />
-                WhatsApp Us
+                Book a Call
+                <ArrowRight className="ml-1 h-4 w-4" />
               </Button>
             </a>
           </div>

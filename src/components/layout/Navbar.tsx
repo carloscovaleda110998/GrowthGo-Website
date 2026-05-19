@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, MessageCircle } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -104,11 +104,10 @@ export default function Navbar() {
             rel="noopener noreferrer"
           >
             <Button
-              className="bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold px-5 shadow-md shadow-[#25D366]/25 transition-all duration-200 hover:shadow-lg hover:shadow-[#25D366]/30"
+              className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-5 shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg hover:shadow-[#2563EB]/30"
               size="default"
             >
-              <MessageCircle className="mr-1.5 h-4 w-4" />
-              WhatsApp Us
+              Book a Call
             </Button>
           </a>
         </div>
@@ -168,11 +167,10 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                   >
                     <Button
-                      className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold shadow-md shadow-[#25D366]/25 transition-all duration-200"
+                      className="w-full bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200"
                       size="lg"
                     >
-                      <MessageCircle className="mr-1.5 h-4 w-4" />
-                      WhatsApp Us
+                      Book a Call
                     </Button>
                   </a>
                 </SheetClose>
