@@ -12,6 +12,7 @@ import {
   MapPin,
   Calendar,
   Loader2,
+  MessageCircle,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -346,17 +347,18 @@ export default function ContactSection() {
                 Schedule a free strategy call
               </p>
 
-              <a href="#final-cta" onClick={(e) => {
-                e.preventDefault()
-                const el = document.querySelector('#final-cta')
-                if (el) el.scrollIntoView({ behavior: 'smooth' })
-              }} className="mt-6 block">
+              <a
+                href="https://wa.me/573018353436?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 block"
+              >
                 <Button
                   size="lg"
-                  className="w-full bg-[#10B981] text-white shadow-lg shadow-[#10B981]/25 transition-all duration-200 hover:bg-[#059669] hover:shadow-xl"
+                  className="w-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/25 transition-all duration-200 hover:bg-[#20BD5A] hover:shadow-xl"
                 >
-                  <Calendar className="mr-2 size-4" />
-                  Book a Call
+                  <MessageCircle className="mr-2 size-4" />
+                  WhatsApp Us
                 </Button>
               </a>
 
