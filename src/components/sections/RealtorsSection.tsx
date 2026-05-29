@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { CheckCircle2, ArrowRight, Users, Calendar, Home } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -72,16 +73,15 @@ export default function RealtorsSection() {
 
             {/* CTA */}
             <div className="mt-10">
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-8 shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#2563EB]/30"
-              >
-                <a href="#contact">
+              <Link href="/realtors">
+                <Button
+                  size="lg"
+                  className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-8 shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#2563EB]/30"
+                >
                   Get Started as a Realtor
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </motion.div>
 

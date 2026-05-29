@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   Mail,
   Phone,
@@ -21,18 +22,18 @@ interface FooterProps {
 }
 
 const serviceLinks = [
-  { label: 'Marketing', href: '#services' },
-  { label: 'Business Development', href: '#services' },
-  { label: 'Lead Follow-Up', href: '#services' },
-  { label: 'Operational Support', href: '#services' },
-  { label: 'CRM & Automation', href: '#services' },
+  { label: 'Marketing', href: '/services' },
+  { label: 'Business Development', href: '/services' },
+  { label: 'Lead Follow-Up', href: '/services' },
+  { label: 'Operational Support', href: '/services' },
+  { label: 'CRM & Automation', href: '/services' },
 ]
 
 const industryLinks = [
-  { label: 'Realtors', href: '#realtors' },
-  { label: 'Loan Officers', href: '#loan-officers' },
-  { label: 'Mortgage Brokers', href: '#loan-officers' },
-  { label: 'Real Estate Teams', href: '#realtors' },
+  { label: 'Realtors', href: '/realtors' },
+  { label: 'Loan Officers', href: '/loan-officers' },
+  { label: 'Mortgage Brokers', href: '/loan-officers' },
+  { label: 'Real Estate Teams', href: '/realtors' },
 ]
 
 const socialLinks = [
@@ -50,12 +51,7 @@ const legalLinks = [
 
 export default function Footer({ onOpenAdmin }: FooterProps) {
   const handleNavClick = (href: string) => {
-    if (href.startsWith('#')) {
-      const el = document.querySelector(href)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
+    // Links are now handled by Next.js Link component
   }
 
   return (
@@ -104,12 +100,12 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
             <ul className="space-y-2.5">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
+                  <Link
+                    href={link.href}
                     className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -123,12 +119,12 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
             <ul className="space-y-2.5">
               {industryLinks.map((link) => (
                 <li key={link.label}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
+                  <Link
+                    href={link.href}
                     className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -165,11 +161,7 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
                 </span>
               </li>
             </ul>
-            <a
-              href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="/contact">
               <Button
                 className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold shadow-md shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
                 size="default"
@@ -177,7 +169,7 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
                 Book a Call
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

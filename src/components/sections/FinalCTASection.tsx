@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { ArrowRight, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -60,11 +61,7 @@ export default function FinalCTASection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
-          <a
-            href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="/contact">
             <Button
               size="lg"
               className="bg-[#2563EB] px-8 py-6 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:bg-[#1D4ED8] hover:shadow-xl hover:shadow-[#2563EB]/30"
@@ -72,8 +69,8 @@ export default function FinalCTASection() {
               Book Your Free Strategy Call
               <ArrowRight className="ml-2 size-4" />
             </Button>
-          </a>
-          <a href="#contact">
+          </Link>
+          <Link href="/contact">
             <Button
               variant="outline"
               size="lg"
@@ -82,7 +79,7 @@ export default function FinalCTASection() {
               <Phone className="mr-2 size-4" />
               Contact Us
             </Button>
-          </a>
+          </Link>
         </motion.div>
 
         <motion.p

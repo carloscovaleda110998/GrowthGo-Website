@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   Share2,
   PenTool,
@@ -221,13 +222,10 @@ export default function ServicesSection() {
               </ul>
 
               {/* Get Started Link */}
-              <a
-                href="#contact"
-                className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] transition-all duration-200 hover:gap-2 hover:underline"
-              >
+              <Link href="/contact" className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] transition-all duration-200 hover:gap-2 hover:underline">
                 Get Started
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

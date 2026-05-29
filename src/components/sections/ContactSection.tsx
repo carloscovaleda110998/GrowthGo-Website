@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -346,20 +347,15 @@ export default function ContactSection() {
                 Schedule a free strategy call
               </p>
 
-              <a
-                href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 block"
-              >
+              <Link href="/contact" className="mt-6 block">
                 <Button
                   size="lg"
-                  className="w-full bg-[#10B981] text-white shadow-lg shadow-[#10B981]/25 transition-all duration-200 hover:bg-[#059669] hover:shadow-xl"
+                  className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg shadow-[#2563EB]/25 font-semibold"
                 >
                   <Calendar className="mr-2 size-4" />
                   Book a Call
                 </Button>
-              </a>
+              </Link>
 
               <div className="mt-8 space-y-5">
                 {/* Email */}

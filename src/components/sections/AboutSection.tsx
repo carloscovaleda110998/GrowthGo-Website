@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import Image from 'next/image'
 import {
   Target,
@@ -174,13 +175,13 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] hover:underline transition-all hover:gap-3"
             >
               Let&apos;s talk about your growth
               <span>→</span>
-            </a>
+            </Link>
           </motion.div>
         </div>
 

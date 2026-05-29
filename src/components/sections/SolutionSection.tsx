@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { MonitorSmartphone, Network, HeadphonesIcon, Check, ArrowRight } from 'lucide-react'
 
 const pillars = [
@@ -157,13 +158,13 @@ export default function SolutionSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="group inline-flex items-center gap-2 text-base font-semibold text-[#2563EB] transition-colors duration-200 hover:text-[#1E3A8A]"
           >
             See how GrowthGo can transform your business
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

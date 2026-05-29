@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { ArrowRight, ArrowUpRight, Users, Phone, Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -190,13 +191,6 @@ const avatarColors = [
 ]
 
 export default function HeroSection() {
-  const handleNavClick = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-[#0F172A] via-[#0F172A] to-[#1E293B]">
       <BackgroundMesh />
@@ -244,22 +238,24 @@ export default function HeroSection() {
               variants={itemVariants}
               className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
             >
-              <Button
-                onClick={() => handleNavClick('#contact')}
-                size="lg"
-                className="group relative h-12 px-8 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
-              >
-                Book a Strategy Call
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                onClick={() => handleNavClick('#services')}
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 border-white/20 bg-transparent text-white font-semibold hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:scale-[1.02]"
-              >
-                Explore Services
-              </Button>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="group relative h-12 px-8 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
+                >
+                  Book a Strategy Call
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link href="/services">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-12 px-8 border-white/20 bg-transparent text-white font-semibold hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  Explore Services
+                </Button>
+              </Link>
             </motion.div>
 
             {/* Trust text with avatars */}
