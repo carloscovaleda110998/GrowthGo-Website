@@ -208,16 +208,28 @@ export default function LoanOfficersSection() {
 
             {/* CTA */}
             <div className="mt-10">
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-8 shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#2563EB]/30"
-              >
-                <a href="#contact">
-                  Get Started as a Loan Officer
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#06B6D4] hover:bg-[#0891B2] text-white font-semibold px-8 shadow-lg shadow-[#06B6D4]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#06B6D4]/30"
+                >
+                  <a href="/loan-officers">
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-[#06B6D4]/30 text-[#06B6D4] hover:bg-[#06B6D4]/10 font-semibold px-8 transition-all duration-200"
+                >
+                  <a href="#contact">
+                    Get Started
+                  </a>
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>

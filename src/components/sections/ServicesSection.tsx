@@ -222,10 +222,10 @@ export default function ServicesSection() {
 
               {/* Get Started Link */}
               <a
-                href="#contact"
+                href="/services"
                 className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] transition-all duration-200 hover:gap-2 hover:underline"
               >
-                Get Started
+                Explore Service Details
                 <ArrowRight className="h-4 w-4" />
               </a>
             </motion.div>

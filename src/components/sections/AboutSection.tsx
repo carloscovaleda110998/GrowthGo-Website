@@ -174,13 +174,22 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <a
-              href="#contact"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] hover:underline transition-all hover:gap-3"
-            >
-              Let&apos;s talk about your growth
-              <span>→</span>
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="/about"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] hover:underline transition-all hover:gap-3"
+              >
+                Learn More About Us
+                <span>→</span>
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#2563EB] transition-colors"
+              >
+                Let&apos;s talk about your growth
+                <span>→</span>
+              </a>
+            </div>
           </motion.div>
         </div>
 

@@ -21,18 +21,18 @@ interface FooterProps {
 }
 
 const serviceLinks = [
-  { label: 'Marketing', href: '#services' },
-  { label: 'Business Development', href: '#services' },
-  { label: 'Lead Follow-Up', href: '#services' },
-  { label: 'Operational Support', href: '#services' },
-  { label: 'CRM & Automation', href: '#services' },
+  { label: 'Social Media Management', href: '/services' },
+  { label: 'Business Development', href: '/services' },
+  { label: 'Lead Follow-Up', href: '/services' },
+  { label: 'Loan Officer Assistant', href: '/services' },
+  { label: 'CRM & Automation', href: '/services' },
 ]
 
 const industryLinks = [
-  { label: 'Realtors', href: '#realtors' },
-  { label: 'Loan Officers', href: '#loan-officers' },
-  { label: 'Mortgage Brokers', href: '#loan-officers' },
-  { label: 'Real Estate Teams', href: '#realtors' },
+  { label: 'Realtors', href: '/realtors' },
+  { label: 'Loan Officers', href: '/loan-officers' },
+  { label: 'Mortgage Brokers', href: '/loan-officers' },
+  { label: 'Real Estate Teams', href: '/realtors' },
 ]
 
 const socialLinks = [
@@ -49,20 +49,11 @@ const legalLinks = [
 ]
 
 export default function Footer({ onOpenAdmin }: FooterProps) {
-  const handleNavClick = (href: string) => {
-    if (href.startsWith('#')) {
-      const el = document.querySelector(href)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
-
   return (
     <footer className="mt-auto bg-[#0F172A] text-white">
       {/* Main Footer Content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 py-12 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-10 py-12 sm:py-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           {/* Company Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
@@ -104,12 +95,12 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
             <ul className="space-y-2.5">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
+                  <a
+                    href={link.href}
                     className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -123,14 +114,28 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
             <ul className="space-y-2.5">
               {industryLinks.map((link) => (
                 <li key={link.label}>
-                  <button
-                    onClick={() => handleNavClick(link.href)}
+                  <a
+                    href={link.href}
                     className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Quick Links Column */}
+          <div className="lg:col-span-1">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+              Company
+            </h3>
+            <ul className="space-y-2.5">
+              <li><a href="/about" className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]">About Us</a></li>
+              <li><a href="/services" className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]">Services</a></li>
+              <li><a href="/realtors" className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]">Realtors</a></li>
+              <li><a href="/loan-officers" className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]">Loan Officers</a></li>
+              <li><a href="/contact" className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#06B6D4]">Contact</a></li>
             </ul>
           </div>
 

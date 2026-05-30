@@ -72,16 +72,28 @@ export default function RealtorsSection() {
 
             {/* CTA */}
             <div className="mt-10">
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-8 shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#2563EB]/30"
-              >
-                <a href="#contact">
-                  Get Started as a Realtor
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#2563EB] hover:bg-[#1E3A8A] text-white font-semibold px-8 shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:shadow-xl hover:shadow-[#2563EB]/30"
+                >
+                  <a href="/realtors">
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-[#2563EB]/30 text-[#2563EB] hover:bg-[#2563EB]/10 font-semibold px-8 transition-all duration-200"
+                >
+                  <a href="#contact">
+                    Get Started
+                  </a>
+                </Button>
+              </div>
             </div>
           </motion.div>
 
