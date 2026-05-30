@@ -46,67 +46,67 @@ const staggerItem = {
 /* ─────────── Pillar Data ─────────── */
 const pillars = [
   {
-    title: 'Presencia Digital Profesional',
+    title: 'Professional Digital Presence',
     subtitle: 'Social Media Management',
     color: '#2563EB',
     colorLight: 'bg-blue-50',
     icon: MonitorSmartphone,
     description:
-      'Creamos contenido, gestionamos redes sociales y posicionamos la marca de nuestros clientes para generar autoridad, confianza y recordación.',
+      'We create content, manage social media, and position our clients\' brands to generate authority, trust, and recall.',
     services: [
-      'Creación de contenido estratégico',
-      'Edición de videos profesionales',
-      'Diseño de piezas gráficas',
-      'Planificación estratégica de contenido',
-      'Programación y publicación',
-      'Parrillas mensuales',
-      'Optimización de marca personal',
-      'Manejo de Instagram, TikTok, Facebook y LinkedIn',
+      'Strategic content creation',
+      'Professional video editing',
+      'Graphic design pieces',
+      'Strategic content planning',
+      'Scheduling and publishing',
+      'Monthly content grids',
+      'Personal brand optimization',
+      'Management of Instagram, TikTok, Facebook, and LinkedIn',
     ],
     callout: {
-      title: 'Contenido sin necesidad de salir en cámara',
-      text: 'Entendemos que no todos los profesionales desean grabarse o aparecer en video. Por eso trabajamos con modelos, creadores de contenido y recursos visuales de apoyo que permiten comunicar la marca sin necesidad de estar frente a cámara.',
+      title: 'Content without being on camera',
+      text: 'We understand that not all professionals want to record themselves or appear on video. That\'s why we work with models, content creators, and visual support resources that allow us to communicate the brand without needing to be on camera.',
       icon: Camera,
     },
   },
   {
     title: 'Business Development',
-    subtitle: 'Relaciones B2B',
+    subtitle: 'B2B Relationships',
     color: '#06B6D4',
     colorLight: 'bg-cyan-50',
     icon: Network,
     description:
-      'Nuestros Business Developers se enfocan en crear y fortalecer alianzas estratégicas entre profesionales del sector inmobiliario e hipotecario.',
+      'Our Business Developers focus on creating and strengthening strategic alliances between real estate and mortgage professionals.',
     services: [
-      'Búsqueda y conexión entre Realtors y Loan Officers',
-      'Desarrollo de relaciones comerciales a largo plazo',
-      'Generación de oportunidades de referidos',
-      'Impulso de colaboraciones estratégicas',
-      'Construcción de redes de negocio sólidas',
+      'Search and connection between Realtors and Loan Officers',
+      'Long-term business relationship development',
+      'Referral opportunity generation',
+      'Strategic collaboration boosting',
+      'Solid business network building',
     ],
     callout: {
-      title: '¿Por qué importa?',
-      text: 'En Real Estate y Mortgage, las relaciones correctas generan oportunidades constantes. Un Realtor conectado con un buen Loan Officer puede enviar clientes calificados de manera recurrente. Y un Loan Officer con una red sólida de Realtors puede construir una fuente estable de nuevos préstamos. GrowthGo ayuda a crear ese puente.',
+      title: 'Why it matters',
+      text: 'In Real Estate and Mortgage, the right relationships generate constant opportunities. A Realtor connected with a good Loan Officer can send qualified clients on a recurring basis. And a Loan Officer with a solid network of Realtors can build a steady source of new loans. GrowthGo helps create that bridge.',
       icon: Target,
     },
   },
   {
     title: 'Loan Officer Assistance & Sales Support',
-    subtitle: 'Asistencia Comercial',
+    subtitle: 'Sales Assistance',
     color: '#10B981',
     colorLight: 'bg-emerald-50',
     icon: Headphones,
     description:
-      'Ofrecemos asistentes y agentes comerciales especializados en comunicación inmobiliaria e hipotecaria, enfocados en apoyar el proceso de ventas y seguimiento.',
+      'We offer assistants and sales agents specialized in real estate and mortgage communication, focused on supporting the sales and follow-up process.',
     services: [
-      'Llamadas a leads',
-      'Seguimiento de clientes potenciales',
-      'Prospección en frío y en caliente',
-      'Agendamiento de citas',
-      'Calificación de prospectos',
-      'Actualización de CRM',
-      'Clasificación de leads según nivel de interés',
-      'Recordatorios y continuidad comercial',
+      'Lead calls',
+      'Follow-up with potential clients',
+      'Cold and warm prospecting',
+      'Appointment scheduling',
+      'Prospect qualification',
+      'CRM updates',
+      'Lead classification by interest level',
+      'Reminders and commercial continuity',
     ],
     callout: null,
   },
@@ -116,42 +116,42 @@ const pillars = [
 const packages = [
   {
     name: 'Starter',
-    tagline: 'Ideal para fortalecer presencia digital',
+    tagline: 'Ideal for strengthening digital presence',
     color: '#2563EB',
     features: [
-      'Manejo de redes sociales',
-      '12 posts mensuales',
-      'Edición de video',
-      'Diseño básico',
-      'Programación de publicaciones',
+      'Social media management',
+      '12 monthly posts',
+      'Video editing',
+      'Basic design',
+      'Publication scheduling',
     ],
     recommended: false,
   },
   {
     name: 'Growth',
-    tagline: 'Presencia digital + apoyo comercial',
+    tagline: 'Digital presence + commercial support',
     color: '#06B6D4',
     features: [
-      'Manejo de redes sociales',
+      'Social media management',
       'Business Developer',
-      'Seguimiento de leads',
-      'Generación de relaciones B2B',
-      'Soporte estratégico',
+      'Lead follow-up',
+      'B2B relationship generation',
+      'Strategic support',
     ],
     recommended: true,
   },
   {
     name: 'Scale',
-    tagline: 'Estructura completa y robusta',
+    tagline: 'Complete and robust structure',
     color: '#10B981',
     features: [
-      'Equipo remoto completo',
+      'Complete remote team',
       'Sales Agent',
       'Appointment Setter',
       'Business Development',
-      'Marketing digital',
-      'Seguimiento comercial',
-      'Soporte operativo integral',
+      'Digital marketing',
+      'Commercial follow-up',
+      'Comprehensive operational support',
     ],
     recommended: false,
   },
@@ -159,15 +159,15 @@ const packages = [
 
 /* ─────────── Benefits Data ─────────── */
 const benefits = [
-  'Reducción de costos operativos',
-  'Mayor presencia digital',
-  'Más visibilidad de marca',
-  'Mejor organización comercial',
-  'Seguimiento efectivo de leads',
-  'Más oportunidades de negocio',
-  'Más referidos y relaciones estratégicas',
-  'Más tiempo para actividades de alto valor',
-  'Operación más ordenada y escalable',
+  'Reduced operational costs',
+  'Greater digital presence',
+  'More brand visibility',
+  'Better commercial organization',
+  'Effective lead follow-up',
+  'More business opportunities',
+  'More referrals and strategic relationships',
+  'More time for high-value activities',
+  'More organized and scalable operations',
 ]
 
 /* ═══════════════════════════════════════════════
@@ -227,9 +227,9 @@ export default function ServicesPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
             >
-              Soluciones Integrales para{' '}
+              Comprehensive Solutions for{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">
-                Tu Crecimiento
+                Your Growth
               </span>
             </motion.h1>
 
@@ -239,8 +239,8 @@ export default function ServicesPage() {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="mx-auto mt-6 max-w-2xl text-lg text-slate-400 sm:text-xl leading-relaxed"
             >
-              GrowthGo une tres pilares esenciales para el crecimiento de
-              cualquier negocio en Real Estate y Mortgage
+              GrowthGo brings together three essential pillars for the growth of
+              any Real Estate and Mortgage business
             </motion.p>
 
             {/* Decorative three-dot indicators */}
@@ -278,12 +278,12 @@ export default function ServicesPage() {
                 THREE PILLARS
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl">
-                Nuestros Tres Pilares de{' '}
-                <span className="text-[#2563EB]">Crecimiento</span>
+                Our Three Growth{' '}
+                <span className="text-[#2563EB]">Pillars</span>
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-[#64748B]">
-                Cada pilar trabaja de forma independiente pero se complementa
-                para impulsar tu negocio al siguiente nivel.
+                Each pillar works independently but complements each other to
+                take your business to the next level.
               </p>
             </motion.div>
 
@@ -436,11 +436,11 @@ export default function ServicesPage() {
                 PACKAGES
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl">
-                Elige Tu Plan de{' '}
-                <span className="text-[#2563EB]">Crecimiento</span>
+                Choose Your Growth{' '}
+                <span className="text-[#2563EB]">Plan</span>
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-[#64748B]">
-                Paquetes diseñados para cada etapa de tu negocio
+                Packages designed for every stage of your business
               </p>
             </motion.div>
 
@@ -547,12 +547,11 @@ export default function ServicesPage() {
                 BENEFITS
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl">
-                ¿Qué Obtienes con{' '}
+                What Do You Get with{' '}
                 <span className="text-[#10B981]">GrowthGo</span>?
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-[#64748B]">
-                Beneficios tangibles que transforman la forma en que operas y
-                creces
+                Tangible benefits that transform the way you operate and grow
               </p>
             </motion.div>
 
@@ -604,15 +603,15 @@ export default function ServicesPage() {
               </div>
 
               <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                GrowthGo no solo ayuda a crecer.{' '}
+                GrowthGo doesn&apos;t just help you grow.{' '}
                 <span className="bg-gradient-to-r from-[#2563EB] via-[#06B6D4] to-[#10B981] bg-clip-text text-transparent">
-                  Ayuda a crecer mejor.
+                  It helps you grow better.
                 </span>
               </h2>
 
               <p className="mx-auto mt-6 max-w-xl text-lg text-slate-400 leading-relaxed">
-                Descubre cómo nuestros tres pilares pueden transformar tu
-                operación y llevar tu negocio al siguiente nivel.
+                Discover how our three pillars can transform your operation and
+                take your business to the next level.
               </p>
 
               <div className="mt-10">

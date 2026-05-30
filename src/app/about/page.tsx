@@ -132,7 +132,7 @@ function HeroSection() {
             variants={itemVariants}
             className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl"
           >
-            Tu Aliado Estratégico de Crecimiento en{' '}
+            Your Strategic Growth Partner in{' '}
             <span className="gradient-text">Real Estate &amp; Mortgage</span>
           </motion.h1>
 
@@ -141,9 +141,9 @@ function HeroSection() {
             variants={itemVariants}
             className="mt-6 text-lg text-slate-300 sm:text-xl leading-relaxed"
           >
-            GrowthGo es una empresa especializada en brindar soluciones integrales para
-            Realtors, Loan Officers y profesionales del ecosistema de Real Estate &amp;
-            Mortgage.
+            GrowthGo is a company specialized in providing comprehensive solutions for
+            Realtors, Loan Officers, and professionals in the Real Estate &amp;
+            Mortgage ecosystem.
           </motion.p>
 
           {/* Subtitle 2 */}
@@ -151,8 +151,8 @@ function HeroSection() {
             variants={itemVariants}
             className="mt-4 text-base text-slate-400 leading-relaxed max-w-2xl mx-auto"
           >
-            No somos solo un proveedor de servicios. Somos una extensión estratégica del
-            equipo comercial de nuestros clientes.
+            We are not just a service provider. We are a strategic extension of our
+            clients' commercial team.
           </motion.p>
         </motion.div>
       </div>
@@ -168,35 +168,35 @@ function HeroSection() {
 const benefits = [
   {
     icon: Eye,
-    title: 'Aumentar visibilidad en el mercado',
+    title: 'Increase market visibility',
     target: 95,
     suffix: '%',
     color: '#2563EB',
   },
   {
     icon: Target,
-    title: 'Atraer más oportunidades',
+    title: 'Attract more opportunities',
     target: 3,
     suffix: 'x',
     color: '#10B981',
   },
   {
     icon: Star,
-    title: 'Fortalecer marca personal',
+    title: 'Strengthen personal brand',
     target: 94,
     suffix: '%',
     color: '#F59E0B',
   },
   {
     icon: Handshake,
-    title: 'Crear relaciones estratégicas de valor',
+    title: 'Build strategic value relationships',
     target: 50,
     suffix: '+',
     color: '#06B6D4',
   },
   {
     icon: Zap,
-    title: 'Mejorar eficiencia operativa',
+    title: 'Improve operational efficiency',
     target: 60,
     suffix: '%',
     color: '#8B5CF6',
@@ -219,14 +219,13 @@ function PurposeSection() {
             variant="outline"
             className="mb-4 border-[#2563EB]/20 bg-[#2563EB]/5 px-4 py-1 text-xs font-semibold tracking-widest text-[#2563EB]"
           >
-            NUESTRO PROPÓSITO
+            OUR PURPOSE
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl">
-            Nuestro <span className="text-[#2563EB]">Propósito</span>
+            Our <span className="text-[#2563EB]">Purpose</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-[#64748B]">
-            Ayudar a nuestros clientes a construir un sistema de crecimiento sostenible que
-            les permita:
+            We help our clients build a sustainable growth system that allows them to:
           </p>
         </motion.div>
 
@@ -293,11 +292,11 @@ function RemoteModelSection() {
             variant="outline"
             className="mb-4 border-[#06B6D4]/20 bg-[#06B6D4]/5 px-4 py-1 text-xs font-semibold tracking-widest text-[#06B6D4]"
           >
-            MODELO REMOTO
+            REMOTE MODEL
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl">
-            Modelo Remoto de{' '}
-            <span className="text-[#06B6D4]">Alto Valor</span>
+            High-Value{' '}
+            <span className="text-[#06B6D4]">Remote Model</span>
           </h2>
         </motion.div>
 
@@ -327,7 +326,7 @@ function RemoteModelSection() {
                 </div>
 
                 <p className="text-slate-300 leading-relaxed mb-8">
-                  Talento bilingüe altamente capacitado desde Colombia
+                  Highly trained bilingual talent from Colombia
                 </p>
 
                 {/* Stats */}
@@ -336,14 +335,14 @@ function RemoteModelSection() {
                     <div className="flex items-center gap-2 mb-2">
                       <DollarSign className="h-4 w-4 text-[#10B981]" />
                       <span className="text-xs text-slate-400 uppercase tracking-wider">
-                        Ahorro
+                        Savings
                       </span>
                     </div>
                     <p className="text-3xl font-bold text-white">
                       <AnimatedCounter target={50} suffix="%" />
                     </p>
                     <p className="text-xs text-slate-400 mt-1">
-                      en costos operativos vs contratación local en EE.UU.
+                      in operational costs vs local hiring in the US
                     </p>
                   </div>
 
@@ -351,12 +350,12 @@ function RemoteModelSection() {
                     <div className="flex items-center gap-2 mb-2">
                       <Users className="h-4 w-4 text-[#2563EB]" />
                       <span className="text-xs text-slate-400 uppercase tracking-wider">
-                        Equipo
+                        Team
                       </span>
                     </div>
                     <p className="text-3xl font-bold text-white">100%</p>
                     <p className="text-xs text-slate-400 mt-1">
-                      Especializado en marketing, ventas y soporte comercial
+                      Specialized in marketing, sales, and commercial support
                     </p>
                   </div>
                 </div>
@@ -374,8 +373,8 @@ function RemoteModelSection() {
                   <Globe className="h-4 w-4 text-[#06B6D4]" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400">Remoto</p>
-                  <p className="text-sm font-bold text-white">Alto Valor</p>
+                  <p className="text-xs text-slate-400">Remote</p>
+                  <p className="text-sm font-bold text-white">High Value</p>
                 </div>
               </div>
             </motion.div>
@@ -389,23 +388,23 @@ function RemoteModelSection() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <h3 className="text-2xl font-bold text-[#0F172A] sm:text-3xl">
-              Trabajamos desde Colombia para impulsar tu negocio en{' '}
-              <span className="text-[#06B6D4]">Estados Unidos</span>
+              We work from Colombia to boost your business in{' '}
+              <span className="text-[#06B6D4]">the United States</span>
             </h3>
 
             <p className="mt-4 text-lg leading-relaxed text-[#64748B]">
-              Trabajamos con un modelo remoto desde Colombia, lo que nos permite ofrecer
-              talento altamente capacitado en marketing, ventas y soporte comercial a un
-              costo mucho más eficiente que el de contratar personal local en Estados
-              Unidos, sin sacrificar calidad, profesionalismo ni resultados.
+              We work with a remote model from Colombia, which allows us to offer
+              highly trained talent in marketing, sales, and commercial support at a
+              much more efficient cost than hiring local staff in the United States,
+              without sacrificing quality, professionalism, or results.
             </p>
 
             <div className="mt-8 space-y-3">
               {[
-                'Equipo bilingüe con dominio del mercado estadounidense',
-                'Sin costos de oficina, beneficios ni cargas sociales en EE.UU.',
-                'Herramientas y procesos profesionales estandarizados',
-                'Comunicación fluida en tu zona horaria',
+                'Bilingual team with mastery of the US market',
+                'No office, benefits, or payroll tax costs in the US',
+                'Standardized professional tools and processes',
+                'Seamless communication in your time zone',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-[#10B981] mt-0.5" />
@@ -425,30 +424,30 @@ function RemoteModelSection() {
 const processSteps = [
   {
     number: 1,
-    title: 'Diagnóstico Inicial',
+    title: 'Initial Diagnosis',
     description:
-      'Analizamos el estado actual de la marca, la operación comercial y las necesidades específicas del negocio.',
+      'We analyze the current state of the brand, commercial operations, and specific business needs.',
     icon: Search,
   },
   {
     number: 2,
-    title: 'Definición de Estrategia',
+    title: 'Strategy Definition',
     description:
-      'Diseñamos una ruta de trabajo clara según los objetivos del cliente: posicionamiento, generación de leads, seguimiento o escalamiento.',
+      'We design a clear work roadmap based on the client\'s objectives: positioning, lead generation, follow-up, or scaling.',
     icon: Target,
   },
   {
     number: 3,
-    title: 'Ejecución y Soporte',
+    title: 'Execution & Support',
     description:
-      'Implementamos el servicio con un equipo remoto especializado que trabaja de forma coordinada y enfocada en resultados.',
+      'We implement the service with a specialized remote team that works in a coordinated and results-focused manner.',
     icon: Rocket,
   },
   {
     number: 4,
-    title: 'Seguimiento y Optimización',
+    title: 'Follow-Up & Optimization',
     description:
-      'Medimos avances, ajustamos procesos y mejoramos continuamente para asegurar crecimiento real y sostenido.',
+      'We measure progress, adjust processes, and continuously improve to ensure real and sustained growth.',
     icon: TrendingUp,
   },
 ]
@@ -469,10 +468,10 @@ function ProcessSection() {
             variant="outline"
             className="mb-4 border-[#2563EB]/20 bg-[#2563EB]/5 px-4 py-1 text-xs font-semibold tracking-widest text-[#2563EB]"
           >
-            NUESTRO PROCESO
+            OUR PROCESS
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl">
-            Cómo <span className="text-[#2563EB]">Trabajamos</span>
+            How We <span className="text-[#2563EB]">Work</span>
           </h2>
         </motion.div>
 
@@ -600,37 +599,37 @@ function ProcessSection() {
 const coreValues = [
   {
     icon: Building2,
-    title: 'Especialización Real',
+    title: 'Real Specialization',
     description:
-      'Entendemos el lenguaje, los retos y la dinámica comercial de Realtors y Loan Officers',
+      'We understand the language, challenges, and commercial dynamics of Realtors and Loan Officers',
     accentColor: '#2563EB',
   },
   {
     icon: Globe,
-    title: 'Equipo Remoto Eficiente',
+    title: 'Efficient Remote Team',
     description:
-      'Talento preparado en marketing, ventas y soporte comercial desde Colombia',
+      'Talent trained in marketing, sales, and commercial support from Colombia',
     accentColor: '#06B6D4',
   },
   {
     icon: DollarSign,
-    title: 'Reducción de Costos',
+    title: 'Cost Reduction',
     description:
-      'Hasta 50% en costos operativos vs estructuras tradicionales en EE.UU.',
+      'Up to 50% in operational costs vs traditional structures in the US',
     accentColor: '#10B981',
   },
   {
     icon: BarChart3,
-    title: 'Enfoque en Resultados',
+    title: 'Results Focus',
     description:
-      'No solo creamos publicaciones, construimos sistemas de crecimiento real',
+      "We don't just create posts, we build real growth systems",
     accentColor: '#F59E0B',
   },
   {
     icon: Rocket,
-    title: 'Escalabilidad',
+    title: 'Scalability',
     description:
-      'Acompañamos en diferentes etapas de crecimiento, desde apoyo puntual hasta estructuras completas',
+      'We support you through different growth stages, from targeted support to complete structures',
     accentColor: '#8B5CF6',
   },
 ]
@@ -657,12 +656,12 @@ function ValuesSection() {
             variant="outline"
             className="mb-4 border-[#2563EB]/30 bg-[#2563EB]/10 px-4 py-1 text-xs font-semibold tracking-widest text-[#60A5FA]"
           >
-            NUESTROS VALORES
+            OUR VALUES
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Qué Nos Hace{' '}
+            What Makes Us{' '}
             <span className="bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">
-              Diferentes
+              Different
             </span>
           </h2>
         </motion.div>
@@ -739,7 +738,7 @@ function VisionCTASection() {
             variant="outline"
             className="mb-4 border-[#10B981]/30 bg-[#10B981]/10 px-4 py-1 text-xs font-semibold tracking-widest text-[#10B981]"
           >
-            NUESTRA VISIÓN
+            OUR VISION
           </Badge>
         </motion.div>
 
@@ -750,7 +749,7 @@ function VisionCTASection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
         >
-          Nuestra Visión
+          Our Vision
         </motion.h2>
 
         <motion.p
@@ -760,8 +759,8 @@ function VisionCTASection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-300"
         >
-          Ayudar a nuestros clientes a escalar sin perder control, profesionalismo ni
-          rentabilidad.
+          Helping our clients scale without losing control, professionalism, or
+          profitability.
         </motion.p>
 
         <motion.div

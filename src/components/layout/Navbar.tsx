@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Menu } from 'lucide-react'
 import Image from 'next/image'
@@ -18,25 +18,22 @@ import {
 } from '@/components/ui/sheet'
 
 const NAV_LINKS = [
-  { label: 'Services', href: '#services', path: '/services' },
-  { label: 'About', href: '#about', path: '/about' },
-  { label: 'Realtors', href: '#realtors', path: '/realtors' },
-  { label: 'Loan Officers', href: '#loan-officers', path: '/loan-officers' },
-  { label: 'Contact', href: '#contact', path: '/contact' },
+  { label: 'Services', path: '/services' },
+  { label: 'About', path: '/about' },
+  { label: 'Realtors', path: '/realtors' },
+  { label: 'Loan Officers', path: '/loan-officers' },
+  { label: 'Contact', path: '/contact' },
 ]
 
 export default function Navbar() {
   const pathname = usePathname()
-  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-
-  const isHome = pathname === '/'
 
   // Determine if navbar should look "scrolled" (white bg):
   // - Always on sub-pages (they have their own layout)
   // - On home only after scrolling past threshold
-  const hasSolidBg = !isHome || scrolled
+  const hasSolidBg = pathname !== '/' || scrolled
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,41 +42,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // Handle hash-based scrolling after navigating from a sub-page to home
-  useEffect(() => {
-    if (isHome && window.location.hash) {
-      const targetId = window.location.hash
-      // Small delay to let the page content render
-      const timer = setTimeout(() => {
-        const el = document.querySelector(targetId)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' })
-        }
-        // Clean the hash from URL without triggering a re-render
-        window.history.replaceState(null, '', '/')
-      }, 300)
-      return () => clearTimeout(timer)
-    }
-  }, [isHome])
-
-  const handleNavClick = useCallback(
-    (href: string, path: string) => {
-      setMobileOpen(false)
-
-      if (isHome) {
-        // Already on home — smooth scroll to the section
-        const el = document.querySelector(href)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' })
-        }
-      } else {
-        // On a sub-page — navigate home with hash, then scroll after load
-        router.push('/' + href)
-      }
-    },
-    [isHome, router]
-  )
 
   return (
     <motion.header
@@ -114,21 +76,19 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => {
-            const isActive = !isHome && pathname === link.path
+            const isActive = pathname === link.path
             return (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href, link.path)}
+              <Link
+                key={link.path}
+                href={link.path}
                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-[#2563EB]/10 hover:text-[#2563EB] ${
                   isActive
                     ? 'text-[#2563EB]'
-                    : hasSolidBg
-                      ? 'text-[#475569]'
-                      : 'text-[#475569]'
+                    : 'text-[#475569]'
                 }`}
               >
                 {link.label}
-              </button>
+              </Link>
             )
           })}
         </div>
@@ -180,11 +140,11 @@ export default function Navbar() {
 
               <div className="flex flex-col px-4 py-4">
                 {NAV_LINKS.map((link, index) => {
-                  const isActive = !isHome && pathname === link.path
+                  const isActive = pathname === link.path
                   return (
-                    <SheetClose asChild key={link.href}>
-                      <button
-                        onClick={() => handleNavClick(link.href, link.path)}
+                    <SheetClose asChild key={link.path}>
+                      <Link
+                        href={link.path}
                         className={`flex items-center rounded-lg px-4 py-3 text-[15px] font-medium transition-colors hover:bg-[#2563EB]/10 hover:text-[#2563EB] ${
                           isActive
                             ? 'text-[#2563EB] bg-[#2563EB]/5'
@@ -193,7 +153,7 @@ export default function Navbar() {
                         style={{ animationDelay: `${index * 50}ms` }}
                       >
                         {link.label}
-                      </button>
+                      </Link>
                     </SheetClose>
                   )
                 })}

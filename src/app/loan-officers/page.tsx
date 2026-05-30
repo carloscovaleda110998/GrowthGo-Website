@@ -145,14 +145,14 @@ const solutions = [
 ]
 
 const loaFeatures = [
-  'Llamadas a leads',
-  'Seguimiento de clientes potenciales',
-  'Prospección en frío y en caliente',
-  'Agendamiento de citas',
-  'Calificación de prospectos',
-  'Actualización de CRM',
-  'Clasificación de leads según nivel de interés',
-  'Recordatorios y continuidad comercial',
+  'Lead calls',
+  'Lead follow-up',
+  'Cold and warm prospecting',
+  'Appointment scheduling',
+  'Prospect qualification',
+  'CRM updates',
+  'Lead classification by interest level',
+  'Reminders and commercial continuity',
 ]
 
 const pipelineBreakdown = [
