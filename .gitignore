@@ -54,3 +54,5 @@ server.log
 GROWTHGO_CONTEXT.md
 # Skills directory
 /skills/
+# Worklog (contains sensitive info)
+worklog.md
