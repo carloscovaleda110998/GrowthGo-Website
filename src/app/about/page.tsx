@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Link from 'next/link'
+
+import { WHATSAPP_URL } from '@/lib/constants'
 import {
   Eye,
   Target,
@@ -770,7 +771,7 @@ function VisionCTASection() {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mt-10"
         >
-          <Link href="/#contact">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="bg-[#2563EB] px-8 py-6 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:bg-[#1D4ED8] hover:shadow-xl hover:shadow-[#2563EB]/30 hover:scale-[1.02]"
@@ -778,7 +779,7 @@ function VisionCTASection() {
               Start Your Growth Journey
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

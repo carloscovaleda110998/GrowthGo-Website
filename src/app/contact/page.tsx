@@ -33,6 +33,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { WHATSAPP_URL } from '@/lib/constants'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
@@ -418,7 +419,7 @@ export default function ContactPage() {
                   </p>
 
                   <a
-                    href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-6 block"

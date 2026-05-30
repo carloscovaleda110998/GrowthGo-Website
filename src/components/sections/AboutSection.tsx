@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 const values = [
   {
@@ -183,7 +184,9 @@ export default function AboutSection() {
                 <span>→</span>
               </a>
               <a
-                href="#contact"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#2563EB] transition-colors"
               >
                 Let&apos;s talk about your growth

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 export default function FinalCTASection() {
   return (
@@ -61,7 +62,7 @@ export default function FinalCTASection() {
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <a
-            href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -73,7 +74,11 @@ export default function FinalCTASection() {
               <ArrowRight className="ml-2 size-4" />
             </Button>
           </a>
-          <a href="#contact">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               variant="outline"
               size="lg"

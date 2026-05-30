@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+
+import { WHATSAPP_URL } from '@/lib/constants'
 import {
   MonitorSmartphone,
   Network,
@@ -510,7 +511,7 @@ export default function ServicesPage() {
                   </ul>
 
                   {/* CTA */}
-                  <Link href="/contact" className="mt-auto">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mt-auto">
                     <Button
                       className={`w-full font-semibold transition-all duration-200 ${
                         pkg.recommended
@@ -522,7 +523,7 @@ export default function ServicesPage() {
                       Get Started
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </motion.div>
@@ -615,7 +616,7 @@ export default function ServicesPage() {
               </p>
 
               <div className="mt-10">
-                <Link href="/contact">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                   <Button
                     size="lg"
                     className="group h-13 px-8 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
@@ -623,7 +624,7 @@ export default function ServicesPage() {
                     Schedule Your Strategy Call
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
-                </Link>
+                </a>
               </div>
             </motion.div>
           </div>

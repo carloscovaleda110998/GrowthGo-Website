@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
+import { WHATSAPP_URL } from '@/lib/constants'
 import {
   Select,
   SelectContent,
@@ -347,7 +348,7 @@ export default function ContactSection() {
               </p>
 
               <a
-                href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 block"

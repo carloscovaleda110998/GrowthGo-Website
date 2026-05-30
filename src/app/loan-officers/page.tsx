@@ -23,6 +23,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
+import { WHATSAPP_URL } from '@/lib/constants'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Button } from '@/components/ui/button'
@@ -330,16 +331,15 @@ export default function LoanOfficersPage() {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
-              <Button
-                asChild
-                size="lg"
-                className="group h-12 bg-[#06B6D4] px-8 font-semibold text-white shadow-lg shadow-[#06B6D4]/25 transition-all duration-300 hover:bg-[#0891B2] hover:shadow-xl hover:shadow-[#06B6D4]/40 hover:scale-[1.02]"
-              >
-                <Link href="/contact">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="group h-12 bg-[#06B6D4] px-8 font-semibold text-white shadow-lg shadow-[#06B6D4]/25 transition-all duration-300 hover:bg-[#0891B2] hover:shadow-xl hover:shadow-[#06B6D4]/40 hover:scale-[1.02]"
+                >
                   Book Your Free Strategy Call
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+                </Button>
+              </a>
               <Button
                 asChild
                 variant="outline"
@@ -731,16 +731,15 @@ export default function LoanOfficersPage() {
               </p>
 
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button
-                  asChild
-                  size="lg"
-                  className="group h-12 bg-[#06B6D4] px-8 font-semibold text-white shadow-lg shadow-[#06B6D4]/25 transition-all duration-300 hover:bg-[#0891B2] hover:shadow-xl hover:shadow-[#06B6D4]/40 hover:scale-[1.02]"
-                >
-                  <Link href="/contact">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    size="lg"
+                    className="group h-12 bg-[#06B6D4] px-8 font-semibold text-white shadow-lg shadow-[#06B6D4]/25 transition-all duration-300 hover:bg-[#0891B2] hover:shadow-xl hover:shadow-[#06B6D4]/40 hover:scale-[1.02]"
+                  >
                     Book Your Free Strategy Call
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
+                  </Button>
+                </a>
                 <Button
                   asChild
                   variant="outline"

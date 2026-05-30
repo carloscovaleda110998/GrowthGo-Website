@@ -24,6 +24,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { WHATSAPP_URL } from '@/lib/constants'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
@@ -279,7 +280,7 @@ function HeroSection() {
             transition={{ duration: 0.5, delay: 0.45 }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <Link href="/contact">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 className="group h-12 bg-[#2563EB] px-8 font-semibold text-white shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:bg-[#1D4ED8] hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
@@ -287,7 +288,7 @@ function HeroSection() {
                 Book Your Free Strategy Call
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-            </Link>
+            </a>
             <Link href="/services">
               <Button
                 variant="outline"
@@ -788,7 +789,7 @@ function CTASection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href="/contact">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="bg-[#2563EB] px-8 py-6 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/25 transition-all duration-200 hover:bg-[#1D4ED8] hover:shadow-xl hover:shadow-[#2563EB]/30"
@@ -796,7 +797,7 @@ function CTASection() {
               Book Your Free Strategy Call
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-          </Link>
+          </a>
           <Link href="/services">
             <Button
               variant="outline"

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MonitorSmartphone, Network, HeadphonesIcon, Check, ArrowRight } from 'lucide-react'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 const pillars = [
   {
@@ -158,7 +159,9 @@ export default function SolutionSection() {
           className="mt-16 text-center"
         >
           <a
-            href="#contact"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 text-base font-semibold text-[#2563EB] transition-colors duration-200 hover:text-[#1E3A8A]"
           >
             See how GrowthGo can transform your business

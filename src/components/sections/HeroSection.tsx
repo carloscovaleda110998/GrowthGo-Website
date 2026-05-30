@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Users, Phone, Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -244,14 +245,19 @@ export default function HeroSection() {
               variants={itemVariants}
               className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
             >
-              <Button
-                onClick={() => handleNavClick('#contact')}
-                size="lg"
-                className="group relative h-12 px-8 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Book a Strategy Call
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="group relative h-12 px-8 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold shadow-lg shadow-[#2563EB]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/40 hover:scale-[1.02]"
+                >
+                  Book a Strategy Call
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
               <Button
                 onClick={() => handleNavClick('#services')}
                 variant="outline"

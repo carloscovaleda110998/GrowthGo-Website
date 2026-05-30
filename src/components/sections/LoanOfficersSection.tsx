@@ -9,6 +9,7 @@ import {
   DollarSign,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 const features = [
   'Pipeline organization & management',
@@ -225,7 +226,11 @@ export default function LoanOfficersSection() {
                   size="lg"
                   className="border-[#06B6D4]/30 text-[#06B6D4] hover:bg-[#06B6D4]/10 font-semibold px-8 transition-all duration-200"
                 >
-                  <a href="#contact">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Get Started
                   </a>
                 </Button>

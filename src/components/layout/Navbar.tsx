@@ -16,6 +16,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from '@/components/ui/sheet'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 const NAV_LINKS = [
   { label: 'Services', path: '/services' },
@@ -96,7 +97,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
           >

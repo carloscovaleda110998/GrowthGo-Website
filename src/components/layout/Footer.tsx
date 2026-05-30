@@ -15,6 +15,7 @@ import {
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 interface FooterProps {
   onOpenAdmin: () => void
@@ -171,7 +172,7 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
               </li>
             </ul>
             <a
-              href="https://wa.me/573045252718?text=Hi%20GrowthGo%2C%20I%20am%20interested%20in%20your%20services!"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
             >

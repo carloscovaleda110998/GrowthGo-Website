@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, ArrowRight, Users, Calendar, Home } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { WHATSAPP_URL } from '@/lib/constants'
 
 const features = [
   'Lead generation & follow-up systems',
@@ -89,7 +90,11 @@ export default function RealtorsSection() {
                   size="lg"
                   className="border-[#2563EB]/30 text-[#2563EB] hover:bg-[#2563EB]/10 font-semibold px-8 transition-all duration-200"
                 >
-                  <a href="#contact">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Get Started
                   </a>
                 </Button>
